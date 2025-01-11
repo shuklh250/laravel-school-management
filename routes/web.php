@@ -2,10 +2,21 @@
 
 use App\Http\Controllers\AcadamicYearController;
 use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\FeeHeadController;
+use App\Http\Controllers\FeeStructrueController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
+    Route::get('/check-db', function () {
+        try {
+            DB::connection()->getPdo();
+            return 'Database connection successful';
+        } catch (\Exception $e) {
+            return 'Database connection failed: ' . $e->getMessage();
+        }
+    });
     return view('welcome');
 });
 
@@ -40,6 +51,17 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('class/edit/{id}',[ClassesController::class,'edit'])->name('class.edit');
         Route::post('class/update',[ClassesController::class,'update'])->name('class.update');
         Route::get('class/delete/{id}',[ClassesController::class,'delete'])->name('class.delete');
+
+        // fee Head management 
+        Route::get('fee-head/create',[FeeHeadController::class,'index'])->name('fee-head.create');
+        Route::post('fee-head/store',[FeeHeadController::class,'store'])->name('fee-head.store'); 
+        Route::get('fee-head/read',[FeeHeadController::class,'read'])->name('fee-head.read');
+        Route::get('fee-head/edit/{id}',[FeeHeadController::class,'edit'])->name('fee-head.edit');
+        Route::post('fee-head/update',[FeeHeadController::class,'update'])->name('fee-head.update');
+        Route::get('fee-head/delete/{id}',[FeeHeadController::class,'delete'])->name('fee-head.delete');
+        // fee structure 
+        Route::get('fee-structure/create',[FeeStructrueController::class,'index'])->name('fee-structure.create');
+        Route::get('fee-structure/store',[FeeStructrueController::class,'store'])->name('fee-structure.store');
 
     });
 });
