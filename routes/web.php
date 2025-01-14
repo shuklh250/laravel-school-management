@@ -61,8 +61,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('fee-head/delete/{id}',[FeeHeadController::class,'delete'])->name('fee-head.delete');
         // fee structure 
         Route::get('fee-structure/create',[FeeStructrueController::class,'index'])->name('fee-structure.create');
-        Route::get('fee-structure/store',[FeeStructrueController::class,'store'])->name('fee-structure.store');
-
+        Route::post('fee-structure/store',[FeeStructrueController::class,'store'])->name('fee-structure.store');
+        Route::get('fee-structure/read',[FeeStructrueController ::class,'read'])->name('fee-structure.read');
+        Route::get('fee-structure/delete/{id}',[FeeStructrueController :: class,'delete'])->name('fee-structure.delete');
+        Route::get('fee-structure/edit/{id}',[FeeStructrueController::class,'edit'])->name('fee-structure.edit');
+        Route::Post('fee-structure/update/{id}',[FeeStructrueController::class,'update'])->name('fee-structure.update');
+        
+ 
     });
 });
 

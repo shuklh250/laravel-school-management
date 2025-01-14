@@ -78,4 +78,6 @@ class FeeHeadController extends Controller
         $fee->delete();
         return redirect()->back()->with('success','Data delete successfully');  
     }
+
+    
 }

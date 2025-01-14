@@ -65,6 +65,16 @@ return redirect()->route('admin.login')->with('success','Logged out successfully
         $user->password = hash::make('ram');
         $user->save();
         return redirect()->route('admin.login')->with('success','User created successfully');
+     
+        // $user = new User();
+        // $user->name='Admin';
+        // $user->role='admin';  
+        // $user->email='admin@gmail.com';
+        // $user->password = hash::make('admin');
+        // $user->save();
+        // return redirect()->route('admin.login')->with('success','User created successfully');
+
+
     }
 
 
