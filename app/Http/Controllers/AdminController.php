@@ -43,7 +43,7 @@ class AdminController extends Controller
 
             if(Auth::guard('admin')->user()->role !='admin'){
                 Auth::guard('admin')->logout();
-                return redirect()->route('admin.login')->with('error','Unatherise user. Access denied');
+                return redirect()->route('admin.login')->with('error','Unautherise user. Access denied');
             }
             return redirect()->route('admin.dashboard');
         }else{
